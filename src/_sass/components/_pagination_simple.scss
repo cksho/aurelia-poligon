@@ -1,0 +1,59 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Client side pagination
+*
+*  ============================
+*/
+
+//=============================
+//	[Client side pagination]
+//=============================
+$paginationSize: 37px;
+
+.simple-pagination {
+    float:left;
+    width: 100%;
+    margin:15px 0;
+    ul {
+        padding:0;
+        margin:0;
+    }
+    li {
+        float:left;
+        list-style: none;
+        width: $paginationSize;
+        height: $paginationSize - 5px;
+        line-height: $paginationSize - 5px;
+        text-align: center;
+        margin:0 1px;
+    }
+    .disabled {
+        opacity:0.4;
+    }
+    .active {
+        background:#e8e8e8;
+        border-radius: 18px;
+    }
+    li a {
+        display:inline-block;
+        width: $paginationSize;
+        height: $paginationSize - 5px;
+        line-height: $paginationSize - 5px;
+        border-radius: 18px;
+        transition: background 200ms ease;
+
+        &:hover {
+            color:$white;
+            background:$btn-save;
+            path {
+                fill:$white;
+            }
+        }
+    }
+    .prev .icon {
+        transform:rotate(180deg);
+    }
+}

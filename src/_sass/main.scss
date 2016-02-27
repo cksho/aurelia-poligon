@@ -1,0 +1,87 @@
+//============================
+//	[Variables & settings]
+//============================
+
+@import "settings/fonts";
+@import "settings/colors";
+@import "settings/animations";
+@import "settings/layout";
+@import "settings/icons";
+
+
+//=============================
+//	[Tools & reusable mixin's]
+//=============================
+
+@import "mixins/buttons";
+@import "mixins/shadows";
+@import "mixins/placeholder";
+@import "mixins/gradients";
+@import "mixins/other";
+
+//=============================
+//	[Vendor & generic]
+//=============================
+
+@import "vendor/normalize";
+
+//=========================================
+//	[Base elements]
+//=========================================
+
+@import "base/core";
+@import "base/typography";
+
+@import "base/form/input";
+@import "base/form/textarea";
+@import "base/form/checkbox";
+@import "base/form/checkbox_extended";
+@import "base/form/radio";
+@import "base/form/switch";
+@import "base/form/select";
+@import "base/form/select_multi";
+@import "base/form/colorpicker";
+@import "base/form/datepicker";
+@import "base/form/timepicker";
+@import "base/form/validation";
+
+//============================
+//	[Components]
+//============================
+
+@import "components/alert";
+@import "components/block";
+@import "components/block_picker";
+@import "components/button";
+@import "components/button_action_menu";
+@import "components/button_long";
+@import "components/cropping";
+@import "components/dashboard_widget";
+@import "components/entity_picker";
+@import "components/fileupload";
+@import "components/fileupload_attachment";
+@import "components/loader";
+@import "components/pagination";
+@import "components/pagination_simple";
+@import "components/popup";
+@import "components/popup_datalist";
+@import "components/table";
+
+//============================
+//	[Layouts]
+//============================
+
+@import "layout/default";
+@import "layout/login";
+
+//============================
+//	[Layout Partials]
+//============================
+@import "layout_partials/page_header";
+@import "layout_partials/page_menu";
+@import "layout_partials/page_tree";
+@import "layout_partials/content_breadcrumbs";
+@import "layout_partials/content_language";
+@import "layout_partials/content_header";
+@import "layout_partials/block_container";
+@import "layout_partials/block_sidebar";

@@ -1,0 +1,27 @@
+//=============================
+//	[Box shadows]
+//=============================
+
+// shadow reset
+%shadow-reset {
+  box-shadow: none !important;
+}
+
+// inner shadow
+@mixin inner-shadow($size, $color) {
+  box-shadow: inset $size $size 0 0 $color;
+}
+
+@mixin inner-left-shadow($size, $color) {
+  box-shadow: inset $size 0 0 0 $color;
+}
+
+// drop shadow
+@mixin drop-shadow($size, $color) {
+  box-shadow: 0 $size 0 0 $color;
+}
+
+// drop shadow
+@mixin drop-shadow-right-down($size, $color) {
+  box-shadow: $size $size 0 0 $color;
+}

@@ -1,0 +1,307 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Page tree container
+*    Page tree
+*    Context menu
+*    Language pick
+*
+*  ============================
+*/
+$tree-node-height: 32px;
+
+.page__tree {
+    min-width: 250px;
+    border-right: 1px solid $border;
+    background: #e8e8e8;
+    align-self: stretch;
+    flex: 0 0 250px;
+    align-self: stretch;
+    overflow: hidden;
+}
+
+//header
+.tree-header {
+    background: #f5f5f5;
+    height: 112px;
+    border-bottom: 1px solid #b6b6b6;
+    padding: 20px;
+    box-shadow: 0 4px 0 0 #d3d3d3;
+
+    .btn-label {
+        text-align: center;
+        margin:0;
+        width:100%;
+    }
+}
+.tree-header__label {
+    color:#85868b;
+    margin-bottom:15px;
+    float:left;
+    width: 100%;
+}
+
+// nodes
+div.jqtree-element {
+    position: relative;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: ellipsis;
+    height: $tree-node-height;
+    line-height: $tree-node-height;
+    font-size: 13px;
+    float: left;
+    width: 100%;
+    & > a,
+    & > span {
+        position: relative;
+        z-index: 10;
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+        color: #37383a !important;
+    }
+
+    &:hover {
+        &:before {
+            display: block;
+        }
+        .jqtree-toggler {
+            border-left: 1px solid #EDEDED;
+            background: #D3D3D3;
+        }
+    }
+}
+
+div.jqtree-element:before {
+    content: '';
+    display: none;
+    position: absolute;
+    left: -90px;
+    top: 0;
+    width: 600px;
+    height: $tree-node-height;
+    z-index: 1;
+    background: rgb(221, 221, 221);
+}
+
+ul.jqtree-tree ul.jqtree_common {
+    margin-left: 21px;
+}
+
+// selected node
+.jqtree-selected {
+    & > div.jqtree-element {
+        background: none !important;
+    }
+    & > div.jqtree-element span,
+    & > div.jqtree-element span::selection {
+        text-shadow: none;
+    }
+    & > div.jqtree-element:before {
+        background: $white;
+        display: block;
+    }
+}
+
+ul.jqtree-tree .jqtree-toggler {
+    width: 33px;
+    height: $tree-node-height;
+    display: inline-block;
+    text-indent: -9999px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    z-index: 900;
+}
+
+ul.jqtree-tree .jqtree-toggler:before {
+    content: '';
+    background: url(../images/icons-svg/t-arrow.svg) no-repeat;
+    height: 6px;
+    width: 9px;
+    position: absolute;
+    top: calc(50% - 3px);
+    left: calc(50% - 3px);
+    transform: rotate(0deg);
+    transition: transform 200ms ease;
+}
+
+.jqtree-toggler.jqtree-closed:before {
+    transform: rotate(-90deg) !important;
+    left: calc(50% - 4px);
+}
+
+.jqtree-title {
+    background: url(../images/icons-svg/t-note.svg) no-repeat left center;
+    padding-left: 26px;
+    float: left;
+    height: 20px;
+    line-height: 22px;
+    position: relative;
+    margin-left: 30px !important;
+}
+
+.jqtree-title:before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 9px;
+    width: 2px;
+    height: 2px;
+    background: #a0a0a0;
+}
+
+.jqtree-title-folder {
+    background: url(../images/icons-svg/t-folder.svg) no-repeat left center;
+    padding-left: 29px;
+    &.jqtree-title:before {
+        display: none;
+    }
+}
+
+.jqtree-hybrid {
+    .jqtree-title {
+        background: url(../images/icons-svg/t-hybrid.svg) no-repeat left center;
+    }
+}
+
+.jqtree-edited {
+    & > .jqtree-element > .jqtree-title:after {
+        content: '';
+        width: 12px;
+        height: 12px;
+        background: url(../images/icons-svg/t-edited.svg) no-repeat left center;
+        position: absolute;
+        top: -3px;
+        left: -3px;
+    }
+}
+
+.jqtree-hidden {
+    span {
+        color: rgb(189, 189, 189);
+    }
+}
+
+.jqtree-hidden.jqtree-selected {
+    opacity:0.7;
+    span {
+        color: #999999 !important;
+    }
+}
+
+.jqtree-title a::selection {
+    background: transparent;
+}
+
+.tree ul.jqtree-tree .jqtree-moving > .jqtree-element .jqtree-title {
+    outline: dashed 1px $secondary-color;
+}
+
+.tree ul.jqtree-tree span.jqtree-border {
+    border: 1px dashed $secondary-color;
+}
+
+.tree ul.jqtree-tree li.jqtree-ghost span {
+    display: block;
+}
+
+.tree ul.jqtree-tree li.jqtree-ghost span.jqtree-circle {
+    border: 2px solid $secondary-color;
+}
+
+.tree ul.jqtree-tree li.jqtree-ghost span.jqtree-line {
+    background-color: $secondary-color;
+}
+
+.tree ul.jqtree-tree li.jqtree-ghost.jqtree-inside {
+    margin-left: 48px;
+}
+
+.tree span.jqtree-dragging {
+    opacity: 0.8;
+    cursor: pointer;
+    z-index: 9999;
+    background: $secondary-color;
+    padding: 0 20px;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 7px;
+}
+
+.tree span.jqtree-dragging:before {
+    display: none;
+}
+
+//=============================
+//  [Context menu]
+//=============================
+
+.tree__contextmenu {
+    width: 150px;
+    position: absolute;
+    background: $primary-color;
+    z-index: 9999;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.tree__contextmenu__item {
+    list-style: none;
+    border-top: 1px dotted $primary-color-light;
+    a {
+        display: block;
+        padding: 5px 20px;
+        color: $white;
+        &:hover {
+            background: $secondary-color;
+        }
+    }
+    &:first-child {
+        border-top: none;
+    }
+}
+
+.tree__contextmenu__item.disabled {
+    display:none;
+    a {
+        cursor: default;
+        color: #959696;
+        &:hover {
+            background: $primary-color;
+        }
+    }
+}
+
+.tree__contextmenu__item--separator {
+    height: 2px;
+    background: red;
+    border-top: none;
+
+    & + .tree__contextmenu__item {
+        border-top: none;
+
+    }
+}
+
+//=============================
+//  [Language pick]
+//=============================
+
+.page-locale {
+    width: 100%;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.page-locale__item {
+    &.active {
+        text-decoration: underline;
+    }
+}

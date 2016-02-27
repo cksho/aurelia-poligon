@@ -1,0 +1,76 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    1. General settings
+*    2. Timepicker navigation
+*
+*  ============================
+*/
+
+//=============================
+//	[1. General settings]
+//=============================
+
+.timepicker-wrap {
+	@include clearfix();
+	display: inline-block;
+	vertical-align: middle;
+	height: 35px;
+	line-height: 35px;
+}
+
+.timepicker__col {
+	position: relative;
+	float: left;
+}
+
+.timepicker__col input[type=text].timepicker__input {
+	width: 82px;
+	padding-right: 50px;
+}
+
+.timepicker__divider {
+	height: 36px;
+	line-height: 36px;
+	margin: 0 10px;
+}
+
+// if datepicker is before timepicker
+.datepicker-wrap + .timepicker-wrap {
+	margin-left: 15px;
+}
+
+//=============================
+//	[1. Timepicker navigation]
+//=============================
+
+%timepicker__btn {
+	position: absolute;
+	right: 1px;
+	padding: 0 14px;
+	background-color: $input-bg;
+	border-left: 1px solid $border;
+	height: 16px;
+	line-height: 16px;
+	&:hover path {
+		fill: $secondary-color;
+	}
+}
+
+.timepicker__btn--up {
+	@extend %timepicker__btn;
+	top: 1px;
+	height: 17px;
+	border-bottom: 1px solid $border;
+	-webkit-border-top-right-radius: $input-border-radius;
+	border-top-right-radius: $input-border-radius;
+}
+
+.timepicker__btn--down {
+	@extend %timepicker__btn;
+	bottom: 1px;
+	-webkit-border-bottom-right-radius: $input-border-radius;
+	border-bottom-right-radius: $input-border-radius;
+}

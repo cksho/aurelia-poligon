@@ -1,0 +1,308 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    General settings
+*    Single attachment
+*    Custom attachment
+*    Media queries
+*
+*  ============================
+*/
+
+//=============================
+//  [General settings]
+//=============================
+
+$attachment-gutter: 10px;
+
+.attachments {
+    @extend %list-reset;
+}
+
+.attachments__item {
+    float: left;
+    width: 50%;
+    padding-left: $attachment-gutter;
+    padding-right: $attachment-gutter;
+    padding-bottom: $attachment-gutter * 2;
+}
+
+//=============================
+//  [Single attachment]
+//=============================
+
+.attachment {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 250px;
+    border: 1px dashed $border;
+    background-color: $white;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+
+}
+
+.attachment__wrap {
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 15px;
+}
+
+.attachment__img {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 150px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: url(../images/svg/attachment.svg) no-repeat center center;
+    background-color: $border-lighter;
+
+    a {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    a:before {
+        transition: opacity 0.2s;
+        @include secondary-color-transparent(0.7);
+        content: '';
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(../images/svg/attach-preview.svg);
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    a:hover:before {
+        opacity: 1;
+    }
+}
+
+.attachment__name {
+    margin-top: 10px;
+    margin-bottom: 0;
+    line-height: 1.1em;
+    font-size: 12px;
+    color: $font-secondary;
+    text-align: center;
+}
+
+.attachment__progress {
+    width: 100%;
+    padding: 0 25px;
+
+    div {
+        transition: width 0.1s;
+    }
+}
+
+.attachment__options {
+    @include clearfix;
+    position: absolute;
+    bottom: -37px;
+    width: 100%;
+    border-top: 1px solid $border;
+    transitio: all 0.5s;
+
+    a {
+        display: block;
+        height: 35px;
+        line-height: 35px;
+        font-size: 12px;
+        text-align: center;
+
+        .svg--center {
+            margin-right: 5px;
+        }
+    }
+}
+
+.attachment__options.has-edit {
+    a {
+        float: left;
+        width: 50%;
+    }
+}
+
+// *** cancel button ***
+.attachment__cancel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    width: 100%;
+    height: 30px;
+    color: $white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+    background-color: rgba(245, 39, 64, 0.65);
+    transition: background-color 0.2s;
+}
+
+.attachment__cancel:hover {
+    background-color: rgba(245, 39, 64, 1);
+}
+
+// *** attachment uploading ***
+.attachment.is-uploaded {
+    border-style: solid;
+    @include drop-shadow($btn-upload-shadow, $border-lighter);
+
+    .attachment__options {
+        bottom: 0;
+    }
+
+    .attachment__cancel {
+        display: none;
+    }
+
+    .attachment__progress {
+        display: none;
+    }
+}
+
+// *** add attachment ***
+.attachments__item--add {
+    @extend .attachments__item;
+    overflow: hidden;
+    position: relative;
+
+    .attachment__img {
+        background-image: url(../images/svg/file-add.svg);
+    }
+
+    .attachment__label {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .attachment__label .svg--center {
+        background-image: url(../images/svg/plus-sm-green.svg);
+        width: 14px;
+        height: 14px;
+    }
+
+    .attachment__label path {
+        fill: $secondary-color;
+    }
+
+    .attachment input[type=file] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .attachment__options {
+        bottom: 0;
+        z-index: 200;
+        a {
+            height: 50px;
+            line-height: 50px;
+            font-size: 14px;
+        }
+        .col-half {
+            padding-left: 0;
+        }
+        .col-half:first-child {
+            border-right: 1px solid #becad7;
+        }
+    }
+}
+
+// *** file disabled ***
+.attachments__item--add.is-disabled {
+    .attachment input[type=file] {
+        visibility: hidden;
+    }
+
+    .attachment {
+        opacity: 0.5;
+    }
+
+    &:hover .attachment {
+        border-color: $border;
+        cursor: not-allowed;
+    }
+}
+
+// *** drag event ***
+.attachments__item--add:hover .attachment,
+.attachments__item--add.is-hover .attachment {
+    border-color: $secondary-color;
+}
+
+//=============================
+//  [Custom attachments]
+//=============================
+
+// files for devices
+.attachments--tablet {
+    @extend .attachments;
+
+    .attachments__item--add .attachment__img {
+        background-image: url(../images/svg/tablet-add.svg);
+    }
+}
+
+.attachments--phone {
+    @extend .attachments;
+
+    .attachments__item--add .attachment__img {
+        background-image: url(../images/svg/phone-add.svg);
+    }
+}
+
+// single file upload
+.is-single-upload {
+    position: relative;
+    height: 250px;
+
+    li {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    li:first-child {
+        z-index: 3;
+    }
+}
+
+//=============================
+//  [Media queries]
+//=============================
+
+// min-width: $screen-sm
+@media (min-width: $screen-sm) {
+    .attachments__item {
+        width: 33.3%;
+    }
+}
+
+// min-width: $screen-lg
+@media (min-width: $screen-lg) {
+    .attachments__item {
+        width: 20%;
+    }
+}

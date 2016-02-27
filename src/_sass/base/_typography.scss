@@ -1,0 +1,66 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Headers
+*    Lists
+*    Links
+*    Other typo
+*
+*  ============================
+*/
+
+//=============================
+//  [Headers]
+//=============================
+
+@for $i from 1 through 6 {
+    h#{$i} {
+        font-weight : normal;
+    }
+}
+
+//=============================
+//  [Lists]
+//=============================
+
+%list-reset {
+    list-style : none;
+    padding    : 0;
+    margin     : 0;
+}
+
+//=============================
+//  [Links]
+//=============================
+
+a {
+    transition      : color 0.2s;
+    color           : $font-secondary;
+    text-decoration : none;
+    &:hover {
+        color : $secondary-color;
+    }
+}
+
+//=============================
+//  [Other typo]
+//=============================
+
+em {
+    color      : $secondary-color;
+    font-style : normal;
+}
+
+.t-l {
+    text-align : left;
+}
+
+.t-c {
+    text-align : center;
+}
+
+.t-r {
+    text-align : right;
+}

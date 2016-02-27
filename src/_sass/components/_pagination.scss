@@ -1,0 +1,147 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    1. Pagination
+*
+*  ============================
+*/
+
+//=============================
+//	[1. Pagination]
+//=============================
+
+.pagination,
+.dataTables_paginate,
+.table-info {
+  position: relative;
+  @include clearfix;
+  @include drop-shadow(2px, $border-lighter);
+  height: 50px;
+  line-height: 50px;
+  border-top: 1px solid $border;
+  border-bottom: 1px solid $border;
+  text-align: center;
+}
+
+// if pagination is added to table
+.table-info + .pagination,
+.dataTables_info + .dataTables_paginate {
+  border-top: 0;
+}
+
+.pagination__btn,
+.paginate_button {
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+  padding: 0 7px;
+  height: 49px;
+  cursor: pointer;
+
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+.pagination__btn.current,
+.paginate_button.current {
+  color: $secondary-color;
+  border-bottom: 2px solid $secondary-color;
+}
+
+// ** datatables style override ***
+
+.pagination__btn.disabled,
+.paginate_button.disabled {
+  color: $border-darker;
+  cursor: not-allowed;
+
+  &:hover {
+    color: $border-darker;
+  }
+}
+
+.pagination__btn.disabled.previous,
+.paginate_button.disabled.previous {
+  background-image: url(../images/svg/gray-arrow-left-s.svg);
+}
+
+.pagination__btn.disabled.next,
+.paginate_button.disabled.next {
+  background-image: url(../images/svg/gray-arrow-right-s.svg);
+}
+
+.pagination__btn.previous,
+.pagination__btn.next,
+.paginate_button.previous,
+.paginate_button.next {
+  position: absolute;
+  top: 0;
+  padding: 0 25px;
+  background: $white;
+  line-height: 51px;
+}
+
+.pagination__btn.previous,
+.paginate_button.previous {
+  left: 0;
+  padding-left: 40px;
+  border-right: 1px solid $border;
+  background-image: url(../images/svg/arrow-left-s.svg);
+  background-repeat: no-repeat;
+  background-position: left 20px center;
+}
+
+.pagination__btn.next,
+.paginate_button.next {
+  right: 0;
+  padding-right: 40px;
+  border-left: 1px solid $border;
+  background-image: url(../images/svg/arrow-right-s.svg);
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+}
+
+//=============================
+//	[2. Small pagination]
+//=============================
+
+.pagination--small {
+  @extend .pagination;
+  @extend %list-reset;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.pagination--small {
+  li {
+    float: left;
+    width: 30px;
+    height: 100%;
+    border-right: 1px solid $border;
+  }
+
+  li:first-child {
+    border-left: 1px solid $border;
+  }
+
+  li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  li.active a {
+		color: $secondary-color;
+  }
+
+  li.disabled a {
+  	color: $border-darker;
+  	cursor: not-allowed;
+  }
+}

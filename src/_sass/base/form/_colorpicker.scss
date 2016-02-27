@@ -1,0 +1,28 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Colorpicker
+*
+*  ============================
+*/
+
+//=============================
+//  [Colorpicker]
+//=============================
+
+.colorpicker {
+    height: auto !important;
+    width: 120px !important;
+    padding-left: 40px !important;
+    padding-top:9px !important;
+    display:inline-block;
+}
+.minicolors-theme-default .minicolors-swatch {
+    height: 27px;
+    width: 27px;
+    border:none;
+    border-radius: 4px;
+    overflow: hidden;
+}

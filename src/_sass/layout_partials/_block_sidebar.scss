@@ -1,0 +1,144 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Block sidebar header
+*    Block sidebar container
+*    Block sidebar opened
+*
+*  ============================
+*/
+
+//=============================
+//  [Block sidebar header]
+//=============================
+.block-sidebar__tabs {
+    float: left;
+    width: calc(100% - 55px);
+    margin: 20px 30px 0 30px;
+    padding: 0;
+}
+
+.block-sidebar__tab {
+    float: left;
+    cursor: pointer;
+    list-style: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    width: 33%;
+    text-align: center;
+    border-bottom: 2px solid #dcdcdc;
+    padding-bottom: 20px;
+}
+
+.block-sidebar__tab.is-active,
+.block-sidebar__tab:hover {
+    border-bottom: 3px solid $secondary-color;
+}
+
+.block-sidebar__tab:hover {
+    color: $secondary-color;
+}
+
+//=============================
+//  [Block sidebar container]
+//=============================
+$block-sidebar-width: 420px;
+
+.block-sidebar {
+    float: left;
+    position: fixed;
+    width: $block-sidebar-width;
+    height: 100%;
+    background: $white;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: -3px 0 8px 1px #e8e8e8;
+    border-left: 1px solid #dcdcdc;
+    transform: translate3d($block-sidebar-width, 0, 0);
+    transition: transform 300ms ease;
+}
+
+.block-sidebar__header {
+    height: 80px;
+}
+
+.block-sidebar__container {
+    position: relative;
+    padding: 0 20px 20px 20px;
+    height: 100%;
+}
+
+.block-sidebar__container.is-locked {
+    &:before {
+        content: '';
+        background:transparent;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+    }
+    .block__picker__item {
+        filter: grayscale(100%) blur(2px);
+    }
+
+}
+
+.block-sidebar__body {
+    height: 100%;
+    float: left;
+}
+
+.block-sidebar__handle {
+    background: $white;
+    content: '';
+    width: 52px;
+    height: 126px;
+    position: absolute;
+    left: -52px;
+    top: 210px;
+    border-radius: 5px 0 0 5px;
+    border-left: 1px solid #dcdcdc;
+    border-top: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+    box-shadow: -4px 0 10px -1px #e8e8e8;
+    cursor: pointer;
+    .icon {
+        float: left;
+        margin: 12px 0 0 13px;
+    }
+    span {
+        display: block;
+        text-transform: uppercase;
+        transform: rotate(-90deg);
+        position: absolute;
+        bottom: 40px;
+    }
+}
+
+//=============================
+//  [Block sidebar opened]
+//=============================
+.page__tree,
+.blocks__container,
+.page__breadcrumbs,
+.content__header {
+    transition: transform 300ms ease;
+}
+
+.sidebar-block-open {
+    .block-sidebar {
+        transform: translate3d(0, 0, 0);
+    }
+    .page__tree,
+    .blocks__container,
+    .page__breadcrumbs,
+    .content__header,
+    .page__sidebar {
+        transform: translate3d(-300px, 0, 0);
+    }
+}

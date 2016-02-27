@@ -1,0 +1,62 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Button Long
+*
+*  ============================
+*/
+
+//=============================
+//	[Button Long]
+//=============================
+
+$btn-shadow: 2px;
+
+.btn--full {
+    @include btn-base;
+    position: relative;
+    background-color: $secondary-color;
+    color: $btn-font-color;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0 $btn-shadow 0 0 darken($secondary-color, 7%);
+    box-shadow: 0 $btn-shadow 0 0 darken($secondary-color, 7%);
+    &:active {
+        @extend %shadow-reset;
+        bottom: -$btn-shadow;
+    }
+}
+
+.btn--full {
+    width: 100%;
+}
+
+.btn-full-row {
+    transition: background-color 0.2s, color 0.2s;
+    @include drop-shadow($btn-shadow, $border-lighter);
+    position: relative;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: 1px solid $secondary-color;
+    text-transform: uppercase;
+
+    path {
+        fill: $secondary-color;
+    }
+}
+
+.btn-full-row:hover {
+    background-color: $secondary-color;
+    color: $white;
+    path {
+        fill: $white;
+    }
+}
+
+.btn-full-row:active {
+    @extend %shadow-reset;
+    bottom: -$btn-shadow;
+}

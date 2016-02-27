@@ -1,0 +1,65 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    1. General settings
+*
+*  ============================
+*/
+
+//=============================
+//  [1. General settings]
+//=============================
+
+.data-list {}
+
+.data-list__list {
+	@include clearfix();
+  @extend %list-reset;
+  padding: 15px 0 5px 0;
+
+  li {
+    @include clearfix;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.data-list__item {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 15px;
+  border: 1px solid $border;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.data-list__item .btn-label {
+  float: right;
+  margin: 7px 0;
+}
+
+.data-list--add {
+	input {
+		width: 100%;
+	}
+}
+
+//=============================
+//  [1. General settings]
+//=============================
+
+@media (min-width: $screen-md) {
+  .data-list .data-list__list li {
+		float: left;
+		width: 50%;
+		padding-right: 10px;
+  }
+  .data-list .data-list__list li:nth-child(2n) {
+  	padding-left: 10px;
+  	padding-right: 0;
+  }
+
+}

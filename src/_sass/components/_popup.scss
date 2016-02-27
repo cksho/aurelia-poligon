@@ -1,0 +1,100 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    1. Curtain
+*
+*  ============================
+*/
+
+//=============================
+//  [1. Curtain]
+//=============================
+
+.popup-wrap {
+	transition: opacity $duration;
+	visibility: hidden;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	width: 100%;
+	height: 100%;
+	padding: 15px;
+	background-color: rgba(0, 0, 0, 0.7);
+	text-align: center;
+}
+
+.popup-wrap.is-active {
+	visibility: visible;
+	opacity: 1;
+}
+
+.popup-wrap.is-active .popup {
+    transform: scale(1);
+	// @include translate(0, 0);
+	opacity: 1;
+}
+
+//=============================
+//  [2. Popup]
+//=============================
+
+.popup {
+	transition: all $duration $easeInOutSine;
+	// @include translate(0, 20%);
+    transform: scale(0.7);
+	opacity: 0;
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	background-color: $white;
+	text-align: left;
+	border-radius: 4px;
+}
+
+.popup__header {
+	@include clearfix();
+	height: 40px;
+	line-height: 40px;
+	padding: 0 15px;
+	border-bottom: 1px solid $border;
+}
+
+.popup__close {
+	float: right;
+	margin: 10px 0;
+}
+
+.popup__close:hover path {
+	fill: $secondary-color;
+}
+
+.popup__content {
+	padding: 15px;
+}
+
+// pagination
+.popup__pagination {
+	@include clearfix();
+	.pagination {
+		float: left;
+	}
+}
+
+.popup__page-info {
+	float: right;
+	line-height: 30px;
+}
+
+//=============================
+//  [3. Media queries]
+//=============================
+
+@media (min-width: $screen-sm) {
+	.popup {
+		width: 600px;
+	}
+}

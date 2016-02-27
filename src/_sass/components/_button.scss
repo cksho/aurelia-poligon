@@ -1,0 +1,90 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Button
+*    Button label
+*
+*  ============================
+*/
+
+//=============================
+//	[Button]
+//=============================
+
+$btn-shadow: 2px;
+
+.btn {
+    @include btn-base;
+    position: relative;
+    background-color: $secondary-color;
+    color: $btn-font-color;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0 $btn-shadow 0 0 darken($secondary-color, 7%);
+    box-shadow: 0 $btn-shadow 0 0 darken($secondary-color, 7%);
+    &:active {
+        @extend %shadow-reset;
+        bottom: -$btn-shadow;
+    }
+}
+
+.btn + .btn {
+    margin-right: 10px;
+}
+
+.btn-with-icon {
+    @include btn-with-icon;
+}
+
+// increase button width by $btn-multiplier
+@for $i from 1 through length($btn-sizes) {
+    .btn-#{nth($btn-sizes, $i)} {
+        width: $btn-base-size * ($btn-multiplier * $i);
+    }
+}
+
+//=============================
+//  [Button label]
+//=============================
+
+$button-label-bg: $white;
+
+.btn-label {
+    display: inline-block;
+    margin-bottom: 10px;
+    @include drop-shadow(2px, #e0e0e0);
+    height: 34px;
+    line-height: 34px;
+    padding-left: 15px;
+    padding-right: 20px;
+    background-color: $white;
+    border: 1px solid $border;
+    border-radius: 4px;
+    color: $font-primary;
+    .-center {
+        position: relative;
+        top: -1px;
+        margin-right: 5px;
+    }
+    path {
+        fill: $font-secondary;
+    }
+}
+
+.btn-label:active {
+    @include inner-shadow(2px, $border-lighter);
+    .svg--center path {
+        fill: $secondary-color;
+    }
+}
+
+.btn-label[disabled],
+.btn-label[disabled]:active {
+    @include drop-shadow(2px, $border-lighter);
+    color: $border-darker;
+
+    .svg--center path {
+        fill: $border-darker;
+    }
+}

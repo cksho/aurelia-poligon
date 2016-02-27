@@ -1,0 +1,309 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Default layout columns
+*
+*  ============================
+*/
+
+//=============================
+//  [Default layout columns]
+//=============================
+#blok {
+  width:300px;
+  height:300px;
+  background:gray;
+}
+.page__body {
+margin-left: $sidebar-width;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex: 1 0 auto;
+    min-height: calc(100vh - #{$page-header-height});
+    margin-left: 70px;
+}
+
+.sidebar-opened .page__body {
+    margin-left: 250px;
+}
+
+.page__content {
+    background: $white;
+    align-self: stretch;
+    flex: 1 1 auto;
+    align-self: stretch;
+    position: relative;
+    form {
+        float:left;
+        width: 100%;
+    }
+}
+
+//=============================
+//  [Content section]
+//=============================
+
+$content-section-header: $white;
+$content-section-row-highlighted: $background-secondary;
+
+.content-section {
+    @include clearfix;
+    border-bottom: 1px solid $border;
+}
+
+.content-section:last-child {
+    border-bottom: 1px solid $border;
+}
+
+.content-section--no-border {
+    @include clearfix;
+    border-bottom: 0;
+}
+
+.content-section__header {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 30px;
+    background-color: $primary-color;
+    border-left: 3px solid $secondary-color;
+    clear:both;
+    h2 {
+        color: $content-section-header;
+        font-size: 18px;
+        margin: 0;
+    }
+}
+
+.content-section__row,
+.content-section__row--highlighted {
+    @include clearfix;
+    width: 100%;
+    float:left;
+    padding: 20px 30px;
+    border-top: 1px solid $border;
+    h3 {
+        margin-top: 0;
+        font-size: 14px;
+    }
+    .tbl-wrap {
+        display: block;
+        margin-top: 20px;
+        > .tbl-wrap__cell,
+        > .tbl-wrap__cell--top {
+            display: block;
+            vertical-align: middle;
+        }
+    }
+    .tbl-wrap:first-child {
+        margin-top: 0;
+    }
+}
+
+.content-section__row--highlighted {
+    background-color: $content-section-row-highlighted;
+}
+
+.content-section__label {
+    width: 160px;
+    label {
+        display: block;
+        padding: 9px 0;
+    }
+}
+
+.content-section__input,
+.content-section__input--half,
+.content-section__input--small,
+.content-section__input--big {
+    input[type=text],
+    .input,
+    .meditor-input {
+        width: 100%;
+    }
+    textarea,
+    .meditor-textarea {
+        width: 100%;
+        height: 80px;
+    }
+    .btn-label,
+    .checkbox-label {
+        margin-right: 5px;
+    }
+    .fancy-select {
+        max-width: 450px;
+    }
+}
+
+.content-section__input--big {
+    textarea,
+    .meditor-textarea {
+        height: 140px;
+    }
+    .fancy-select {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.content-section__input--small {
+    input[type=text],
+    .input,
+    .meditor-input,
+    textarea,
+    .meditor-textarea {
+        width: auto;
+    }
+}
+
+.content-section__input--button {
+    float: right;
+    clear: both;
+    // padding-left: 20px;
+    margin-top: 10px;
+}
+
+.content-section__row:first-child,
+.content-section__header + .content-section__row {
+    border-top: 0;
+}
+
+// *** section with columns ***
+.content-section__row,
+.content-section__row--highlighted {
+    .col, .col-half, .col-third {
+        float: none;
+        width: 100%;
+        margin-top: 20px;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+//=============================
+//  [Content subsection]
+//=============================
+
+.content-subsection {
+    @include clearfix;
+}
+
+.content-subsection__title {
+    margin: 0;
+    font-size: 18px;
+}
+
+//=============================
+//  [Content section adding]
+//=============================
+
+.content-section-add {
+    padding: 20px;
+}
+
+//=============================
+//  [Media queries]
+//=============================
+
+// min-width: $screen-xs + 1
+@media (min-width: $screen-xs + 1) {
+    // *** Content section ***
+    .content-section__row,
+    .content-section__row--highlighted {
+        .tbl-wrap {
+            display: table;
+            > .tbl-wrap__cell,
+            > .tbl-wrap__cell--top {
+                display: table-cell;
+            }
+        }
+    }
+    .content-section__input--button {
+        float: none;
+        margin-top: 0;
+        padding-left: 20px;
+    }
+}
+
+// min-width: $screen-lg
+@media (min-width: $screen-lg) {
+    // *** section with columns ***
+    .content-section__row,
+    .content-section__row--highlighted {
+        .col, .col-half, .col-third {
+            float: left;
+            margin-top: 0;
+        }
+    }
+    // *** section with columns ***
+    .content-section__row,
+    .content-section__row--highlighted {
+        .col {
+            width: auto;
+            padding-left: 30px;
+        }
+        .col:first-child {
+            padding-left: 0;
+        }
+        .col .content-section__label {
+            text-align: center;
+        }
+        .col:first-child .content-section__label {
+            text-align: left;
+        }
+        .col .checkbox {
+            line-height: 36px;
+        }
+    }
+    // *** section with half columns ***
+    .content-section__row,
+    .content-section__row--highlighted {
+        .col-half {
+            width: 50%;
+            padding-left: 30px;
+        }
+        .col-half:first-child {
+            padding-left: 0;
+        }
+        .col-half .content-section__label {
+            width: 140px;
+        }
+        .col-half:first-child .content-section__label {
+            width: 160px;
+        }
+        .col-half .checkbox {
+            line-height: 36px;
+        }
+    }
+    // *** section with third columns ***
+    .content-section__row,
+    .content-section__row--highlighted {
+        .col-third {
+            width: 33.3%;
+            padding-left: 30px;
+        }
+        .col-third:first-child {
+            padding-left: 0;
+        }
+        .col-third .content-section__label {
+            width: 120px;
+            text-align: center;
+        }
+        .col-third:first-child .content-section__label {
+            width: 160px;
+            text-align: left;
+        }
+        .col-third .checkbox {
+            line-height: 36px;
+        }
+    }
+}

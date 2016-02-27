@@ -1,0 +1,50 @@
+{
+    "type": "object",
+    "properties": {
+        "jobs": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "faker": "name.jobTitle"
+                    }
+                },
+                "required": ["title"]
+            }
+        },
+        "newses": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "faker": "lorem.words"
+                    },
+                    "image": {
+                        "type": "string",
+                        "faker": "image.image"
+                    },
+                    "desc": {
+                        "type": "string",
+                        "faker": "lorem.paragraphs"
+                    },
+                    "date": {
+                        "type": "string",
+                        "faker": "date.future"
+                    }
+                },
+                "required": ["title", "image", "desc", "date"]
+            }
+        }
+    },
+    "required": [
+        "jobs", "newses"
+    ]
+}

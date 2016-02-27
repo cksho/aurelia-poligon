@@ -1,0 +1,16 @@
+//============================
+//
+//  [Placeholder mixin]
+//  @source: 
+//  http://bit.ly/1iz1oTK
+//
+//============================
+
+@mixin placeholder {
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*     Block Picker Template
+*
+*  ============================
+*/
+
+//=============================
+//	[Block Picker Template]
+//=============================
+.block__picker__item {
+    background:$white;
+    width: 174px;
+    height: 180px;
+    border: 1px dashed $border;
+    float: left;
+    margin: 10px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 3px 0 0 #e8e8e8, 2px 3px 0 0 #e8e8e8;
+    position: relative;
+    transition:filter 200ms linear;
+}
+.block__picker__move {
+    position: absolute;
+    right:15px;
+    top:15px;
+}
+
+.block__picker__item:nth-child(2n) {
+    margin-left: 0;
+}
+
+.block__picker__icon {
+    width: 82px;
+    height: 82px;
+    line-height: 82px;
+    display: block;
+    border-radius: 100%;
+    text-align: center;
+    margin: 20px auto 15px auto;
+    .icon {
+        vertical-align: middle;
+    }
+}
+.block-tab {
+    display:none;
+}
+.block-tab.is-active {
+    display:block;
+}

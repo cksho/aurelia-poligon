@@ -1,0 +1,101 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    1. Html, body
+*    2. Page structure
+*    3. Additional reset
+*
+*  ============================
+*/
+
+//============================
+//  [Html, body]
+//============================
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: white;
+    font: 14px/1.33em 'sisco-light', Arial, sans-serif;
+    font-weight: 300;
+    color: $font-primary;
+    min-height: 100%;
+}
+
+//============================
+//  [Page structure]
+//============================
+
+// apply a natural box layout model to all elements
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+//============================
+//  [Additional reset]
+//============================
+
+a,
+button,
+input,
+textarea,
+select,
+option {
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    &:focus {
+        outline: 0;
+    }
+}
+
+// *** bootstrap grid additions ***
+.no-gutter {
+    padding: 0 !important;
+}
+
+//============================
+//  [Content positioning]
+//============================
+
+$gaps: 0 10 20 30;
+$styles: m p;
+
+// *** generate margin and padding classes ***
+@each $gap in $gaps {
+    @each $style in $styles {
+        @if $style == m {
+            $css: "margin"
+        } @else {
+            $css: "padding"
+        }
+
+        .#{$style}-#{$gap} {
+            #{$css}: #{$gap}px;
+        }
+        .#{$style}Top-#{$gap} {
+            #{$css}-top: #{$gap}px;
+        }
+        .#{$style}Bottom-#{$gap} {
+            #{$css}-bottom: #{$gap}px;
+        }
+        .#{$style}Left-#{$gap} {
+            #{$css}-left: #{$gap}px;
+        }
+        .#{$style}Right-#{$gap} {
+            #{$css}-right: #{$gap}px;
+        }
+    }
+}

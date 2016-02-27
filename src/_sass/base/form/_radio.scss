@@ -1,0 +1,62 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Radios
+*
+*  ============================
+*/
+//=============================
+//  [Radios]
+//=============================
+
+.radio {
+    display : inline-block;
+    cursor  : pointer;
+    input[type=radio] {
+        display : none;
+    }
+    div {
+        display               : inline-block;
+        position              : relative;
+        width                 : 20px;
+        height                : 20px;
+        vertical-align        : middle;
+        background-color      : $checkbox-bg;
+        border                : 1px solid $border;
+        -webkit-border-radius : 50%;
+        border-radius         : 50%;
+        @include inner-shadow(2px, $border-lighter);
+    }
+    span {
+        margin-left  : 3px;
+        margin-right : 15px;
+    }
+    div:hover {
+        border-color : $secondary-color;
+    }
+    input[type=radio]:checked + div:before {
+        content               : '';
+        position              : absolute;
+        top                   : 4px;
+        left                  : 4px;
+        width                 : 10px;
+        height                : 10px;
+        -webkit-border-radius : 50%;
+        border-radius         : 50%;
+        background-color      : $secondary-color;
+        @include inner-shadow(-1px, darken($secondary-color, 4%));
+    }
+}
+
+#reborn_cms_media_type {
+    label {
+        float          : left;
+        margin-right   : 15px;
+        text-transform : capitalize;
+    }
+    input[type="radio"] {
+        margin-right : 5px;
+    }
+}

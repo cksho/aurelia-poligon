@@ -1,0 +1,33 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Form validation
+*
+*  ============================
+*/
+
+//============================
+//  [Form validation]
+//============================
+
+label.required:after,
+label.is-required:after {
+  content: '*';
+  margin-left: 3px;
+  color: $secondary-color;
+}
+
+// input & textarea validation
+input, 
+textarea,
+input:focus, 
+textarea:focus {
+  &.is-valid {
+    border-color: $success;
+  }
+  &.is-invalid {
+    border-color: $error;
+  }
+}

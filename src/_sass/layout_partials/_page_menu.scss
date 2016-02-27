@@ -1,0 +1,420 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Layout
+*    Menu header
+*    Main menu
+*    Main menu column toggle
+*    Submenu
+*    Offcanvas menu
+*    Sidebar footer
+*
+*  ============================
+*/
+//=============================
+//  [Layout]
+//=============================
+
+.page__sidebar {
+    width: $sidebar-width;
+    position: fixed;
+    z-index: 999;
+    height: 100%;
+    background: $page-sidebar-bg;
+    transform: translate3d(-180px, 0, 0);
+    transition: transform 300ms ease;
+}
+
+.page__sidebar:hover {
+    transform: translate3d(0, 0, 0);
+}
+
+.sidebar-opened {
+    .page__sidebar {
+        transform: translate3d(0, 0, 0);
+    }
+
+}
+
+//=============================
+//  [Main header]
+//=============================
+
+.menu__header {
+    position: relative;
+    width: 100%;
+    background: $secondary-color;
+    height: $page-header-height;
+    line-height: $page-header-height;
+    padding: 0 24px 0 30px;
+    border-bottom: 1px solid #ff7575;
+    box-shadow: 0 3px 0 0 #000;
+    img {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .icon {
+        position: absolute;
+        top: 50%;
+        right: 24px;
+        cursor: pointer;
+    }
+    .icon-m-burger {
+        margin-top: -6px;
+        display:block;
+    }
+}
+
+.menu__header__lock {
+    background: url(../images/icons-svg/m-unlock.svg) no-repeat;
+    display: none;
+    width: 21px;
+    height: 28px;
+    margin-top: -12px;
+    opacity: 0.5;
+    transition: opacity 300ms ease;
+}
+
+.menu__header__lock:hover {
+    background: url(../images/icons-svg/m-lock.svg) no-repeat;
+    opacity:1;
+}
+
+.page__sidebar:hover {
+    .menu__header__lock {
+        display:block;
+    }
+    .icon-m-burger {
+        display:none;
+    }
+}
+
+.sidebar-opened {
+    .icon-m-burger {
+        display: none;
+    }
+    .menu__header__lock {
+        background: url(../images/icons-svg/m-lock.svg) no-repeat;
+        display: block;
+        &:hover {
+            background: url(../images/icons-svg/m-unlock.svg) no-repeat;
+            opacity: 1;
+        }
+    }
+}
+
+.sidebar-closed {
+    .icon-m-burger {
+        display: block;
+    }
+    .page__sidebar:hover {
+        .icon-m-burger {
+            display: none;
+        }
+        .menu__header__lock {
+            background: url(../images/icons-svg/m-unlock.svg) no-repeat;
+            &:hover {
+                background: url(../images/icons-svg/m-lock.svg) no-repeat;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+
+
+//=============================
+//  [Main menu]
+//=============================
+.menu-wrapper {
+    padding-bottom: 80px;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar__menu {
+    width: 100%;
+    height: calc(100% - 81px);
+    position: relative;
+}
+
+.menu__list,
+.menu__list--offcanvas {
+    @extend %list-reset;
+    position: relative;
+    width: 100%;
+}
+
+.menu__item {
+    position: relative;
+    width: 100%;
+    a {
+        transition: color 0.2s;
+    }
+    .svg--center {
+        position: relative;
+        top: -1px;
+        margin-right: 10px;
+    }
+}
+
+.menu__item-label {
+    transition: color 0.2s;
+    display: block;
+    color: $menu-link;
+    height: $menu-item-height;
+    line-height: $menu-item-height;
+    padding: 0 24px 0 30px;
+    border-bottom: 1px solid $page-sidebar-border;
+    text-align: right;
+    span {
+        float: left;
+        position: relative;
+    }
+    .icon {
+        vertical-align: middle;
+        position: relative;
+        top: -1px;
+        opacity: 0.5;
+        transition: opacity 300ms ease;
+    }
+}
+
+.menu__item.has-submenu .menu__item-label span:after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 6px);
+    right: -27px;
+    width: 7px;
+    height: 11px;
+    background: url(../images/icons-svg/m-arrow.svg) no-repeat;
+    -webkit-transition: -webkit-transform 0.2s;
+    -ms-transition: -ms-transform 0.2s;
+    transition: transform 0.2s;
+}
+
+// active item
+.menu__item.is-active {
+    background: $menu-active-bg;
+    > a {
+        color: $white;
+    }
+    .icon {
+        opacity: 0.9;
+    }
+}
+
+.menu__item.is-opened {
+    .menu__item-label span:after {
+        transform: rotate(90deg);
+        -webkit-transform-origin: 50% 52%;
+    }
+}
+
+// hover
+.menu__item-label:hover {
+    color: $white;
+    background: $menu-hover-bg;
+    .icon {
+        opacity: 0.9;
+    }
+}
+
+// scroll
+.sidebar__menu {
+    .mCSB_outside + .mCSB_scrollTools {
+        right:0;
+    }
+}
+
+//=============================
+//  [Submenu]
+//=============================
+
+$max-height-duration: 0.5s;
+$opacity-duration: 0.2s;
+$translate3d-duration: 0.3s;
+
+.submenu {
+    position: relative;
+    z-index: 2;
+    @extend %list-reset;
+    width: 100%;
+    padding: 10px 0;
+    background-color: $submenu-bg;
+    -webkit-box-shadow: inset 0 3px 0 0 rgba(0, 0, 0, 0.036);
+    box-shadow: inset 0 3px 0 0 rgba(0, 0, 0, 0.036);
+    border-bottom: 1px solid $page-sidebar-border;
+}
+
+// visibility
+.submenu-wrap {
+    overflow: hidden;
+    opacity: 0;
+    max-height: 0;
+    @extend %enable-gpu;
+    transition: max-height $max-height-duration, opacity $opacity-duration linear 0.3s;
+}
+
+.submenu-wrap.is-unrolled {
+    opacity: 1;
+    max-height: 500px;
+    transition: max-height $max-height-duration, opacity $opacity-duration;
+
+    .submenu__item {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.submenu__item {
+    width: 100%;
+    opacity: 0;
+    -webkit-transform: translate3d(-30%, 0, 0);
+    transform: translate3d(-30%, 0, 0);
+    -webkit-transition: -webkit-transform $translate3d-duration ease $max-height-duration, opacity $opacity-duration linear $translate3d-duration;
+    transition: transform $translate3d-duration ease $max-height-duration, opacity $opacity-duration linear $translate3d-duration;
+    a {
+        position: relative;
+        display: block;
+        height: $menu-item-height - 4;
+        line-height: $menu-item-height - 4;
+        padding: 0 22px 0 30px;
+        color: $menu-link;
+    }
+}
+
+.submenu-unrolled {
+    & > .menu__item-label {
+        color: $white;
+        background: #503f56;
+    }
+}
+
+.submenu__item__shortcut {
+    float: right;
+    width: 30px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+// add delay to elements
+@for $i from 1 through 10 {
+    .submenu__item:nth-child(#{$i}) {
+        transition-delay: 0.05s * $i;
+    }
+}
+
+// active
+.submenu__item a:hover,
+.submenu__item.is-active a {
+    color: $white;
+}
+
+// IOS fallback
+.is-ios {
+    .submenu__item a:hover,
+    .submenu__item.is-active a {
+        color: $secondary-color;
+        &:before {
+            color: $secondary-color;
+        }
+    }
+}
+
+//=============================
+//  [3. Offcanvas menu]
+//=============================
+
+$menu-item-offcanvas: $white;
+$menu-item-svg: #48668c;
+
+/**
+ * offcanvas menu styles override
+ */
+.menu__list--offcanvas {
+    // menu item
+    .menu__item:before {
+        left: 0;
+        right: 0;
+        background-color: $primary-color-lighter;
+    }
+    .menu__item.has-submenu:after {
+        top: 22px;
+        width: 8px;
+        height: 15px;
+        background-size: cover;
+    }
+    // menu item label
+    .menu__item-label {
+        height: 60px;
+        line-height: 60px;
+        color: $menu-item-offcanvas;
+        font-size: 20px;
+        .svg--center {
+            width: 25px;
+            height: 25px;
+            path {
+                fill: $menu-item-svg;
+            }
+        }
+    }
+    .menu__item.submenu-unrolled .menu__item-label path {
+        fill: $secondary-color;
+    }
+    // submenu
+    .submenu {
+        padding: 15px 0;
+        background-color: $primary-color-darker;
+        border-color: darken($primary-color-darker, 20%);
+    }
+    .submenu__item a {
+        color: $menu-item-offcanvas;
+        font-size: 18px;
+        height: 46px;
+        line-height: 46px;
+        &:before {
+            font-size: 15px;
+        }
+    }
+    .submenu__item a:hover:before,
+    .submenu__item.is-active a:before {
+        font-size: 10px;
+        color: $menu-item-offcanvas;
+    }
+}
+
+// IOS fallback
+.is-ios {
+    .menu__list--offcanvas {
+        .submenu__item a:hover:before,
+        .submenu__item.is-active a:before {
+            font-size: 15px;
+        }
+    }
+}
+
+//=============================
+//  [Sidebar footer]
+//=============================
+
+.sidebar__footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 74px;
+    line-height: 87px;
+    text-align: center;
+    .icon {
+        opacity: 0.5;
+        transition: opacity 300ms ease;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,239 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*     Single Block
+*     Block Head
+*     Block Body
+*     Block Icons
+*
+*  ============================
+*/
+
+//=============================
+//	[Single Block]
+//=============================
+$blockHeaderHeight: 32px;
+$blockHeight: 198px;
+
+.block {
+    background: $white;
+    color: $primary-color;
+    width: 100%;
+    min-height: $blockHeight;
+    margin: 10px auto 20px auto;
+    overflow: hidden;
+    clear: both;
+    border: 1px solid $border;
+    box-shadow: 0px 3px 0px 0px #e8e8e8;
+    opacity: 1 !important;
+}
+
+.container__column .block:last-child {
+    margin-bottom:0;
+}
+
+.block--hidden {
+    opacity: 0.5 !important;
+}
+
+.blocks__templates .block {
+    display: none;
+}
+
+.block.ui-draggable-dragging {
+    max-width:174px;
+    width: 174px;
+    height: 180px;
+    background:red;
+    z-index:99999 !important;
+}
+
+.block__highlight {
+    background: #fffdce;
+    border: 1px dashed #f5e000;
+    height: $blockHeight;
+    margin: 10px auto;
+}
+
+//=============================
+//	[Block Head]
+//=============================
+.block__head {
+    float: left;
+    height: auto;
+    width: 100%;
+    color: $white;
+    padding-top: 10px
+}
+
+.block__head__name {
+    float: left;
+    margin-left: 20px;
+    height: $blockHeaderHeight;
+    line-height: $blockHeaderHeight;
+    display: inline-block;
+    color: $primary-color;
+}
+
+.block__head__options {
+    float: right;
+    margin-right: 20px;
+    height: $blockHeaderHeight;
+    line-height: $blockHeaderHeight;
+}
+
+.block__head__options__item {
+    height: 31px;
+    min-width: 32px;
+    text-align: center;
+    float: left;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 13px;
+    margin-left: 5px;
+    border-radius: 32px;
+    transition: background 0.2s;
+    &:hover {
+        background: #5aacff;
+
+        color: $white;
+        path {
+            fill: $white;
+        }
+    }
+
+    span {
+        margin-right: 10px;
+    }
+    i, span {
+        float: left;
+    }
+    i {
+        margin: 7px 0 0 8px;
+    }
+}
+
+.block__option--edit {
+    padding:0 5px;
+    .icon {
+        margin-right:10px;
+    }
+}
+
+//=============================
+//	[Block Body]
+//=============================
+.block__body {
+    float: left;
+    width: 100%;
+    clear: both;
+    color: #5a6779;
+    padding: 30px;
+}
+.container__column .block__picker__item {
+    opacity:1;
+    transition: opacity 500ms ease;
+}
+.hideMe {
+    opacity:0 !important;
+}
+
+.block__body__content {
+    max-width: 550px;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: center;
+    display: table;
+}
+
+.block-browser {
+    border: 2px solid #90d796;
+    min-height: 122px;
+    line-height: 122px;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+
+    &:before {
+        content: '';
+        height: 2px;
+        background: #90d796;
+        width: 100%;
+        position: absolute;
+        top: 15px;
+        left: 0;
+    }
+    &:after {
+        content: '\2022\2022\2022';
+        height: 5px;
+        position: absolute;
+        left: 6px;
+        color: rgb(144, 215, 150);
+        font-size: 22px;
+        line-height: 14px;
+    }
+
+    .icon {
+        position: relative;
+        top: 8px;
+    }
+}
+
+//=============================
+//	[Block Icons]
+//=============================
+.block__icon {
+    display: inline-block;
+    vertical-align: middle;
+
+    path {
+        fill: #85868b;
+    }
+}
+
+$blockColors: (
+        text: #a47dc1,
+        html: #E80C7A,
+        photo: #39c567,
+        image: #39c567,
+        news: #34abff,
+        ext: #a47dc1,
+        menu: #e82b00
+);
+
+@each $block, $color in $blockColors {
+    $bgColor: rgba($color, 0.2);
+
+    .block--#{$block} {
+        .block__head__options__item:hover {
+            background:#{$color};
+        }
+        .block-browser {
+            border-color: #{$color};
+            &:before {
+                background: #{$color}
+            }
+            &:after {
+                color: #{$color};
+            }
+        }
+        .icon-block-#{$block} path {
+            fill: #{$color};
+        }
+    }
+    .block__picker__icon--#{$block} {
+        background: $bgColor;
+    }
+    .block__picker__item {
+        .icon-block-#{$block} {
+            path {
+                fill: #{$color};
+            }
+        }
+    }
+}

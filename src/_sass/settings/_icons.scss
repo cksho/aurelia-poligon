@@ -1,0 +1,160 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    1. General settings
+*    2. SVG images
+*
+*  ============================
+*/
+
+//=============================
+//	[1. General settings]
+//=============================
+
+.svg,
+.icon {
+    display           : inline-block;
+    background-repeat : no-repeat;
+    svg {
+        float : left;
+    }
+}
+
+.svg--center,
+.icon--center,
+.icon.-center {
+    @extend .svg;
+    vertical-align : middle;
+}
+
+.svg:hover,
+.svg--center:hover {
+    path {
+        transition : fill 0.2s;
+    }
+}
+
+// .ngapp-svg {
+// 	visibility: hidden;
+// }
+
+.ngapp-svg.app-svg-replaced {
+    // visibility: visible;
+    background-image : none;
+    svg {
+        display        : inline-block;
+        vertical-align : top;
+        width          : 100%;
+        height         : 100%;
+    }
+}
+
+//=============================
+//	[2. SVG images]
+//=============================
+
+// list of svg images
+$svg-images :
+// logos
+company-logo 208px 84px,
+reborn-logo 88px 25px,
+    // page header
+    user 16px 16px,
+bars 17px 14px,
+logout 12px 12px,
+    // special buttons
+    send 25px 24px,
+save 21px 25px,
+submit 21px 25px,
+add 21px 25px,
+close 21px 21px,
+magnify 16px 16px,
+delete 25px 24px,
+settings 25px 25px,
+    // check mark
+    checked 12px 9px,
+    // menu
+    document 16px 16px,
+media 16px 16px,
+users-list 17px 15px,
+file 13px 16px,
+users 16px 16px,
+gear 16px 16px,
+arrow-right 6px 9px,
+calendar 15px 16px,
+    // content header icons
+    document-big 21px 25px,
+media-big 25px 25px,
+users-list-big 25px 25px,
+users-big 25px 24px,
+gear-big 25px 25px,
+    // cell options
+    options 15px 14px,
+preview 24px 24px,
+trash 13px 16px,
+    // cell draggable
+    drag-arrow 7px 16px,
+drag-bars 12px 9px,
+    // pagination
+    arrow-left-s 5px 9px,
+arrow-right-s 5px 9px,
+    // report status
+    report-cell 10px 16px,
+report-message 16px 13px,
+report-chat 16px 15px,
+report-computer 16px 16px,
+    // datepicker
+    date-arrow-left 7px 12px,
+date-arrow-right 7px 12px,
+time-arrow-up 8px 6px,
+time-arrow-down 8px 6px,
+    // file upload
+    plus 23px 23px,
+plus-small 14px 14px,
+cellphone 16px 25px,
+tablet 21px 25px,
+upload 15px 13px,
+    // attachments
+    plus-sm-green 14px 14px,
+    // section adding
+    dots 16px 4px,
+    //block options
+    edit 16px 16px,
+trash2 15px 16px,
+move 15px 15px,
+light 16px 16px,
+    //block types
+    block-gallery 140px 110px,
+block-news 140px 110px,
+block-multibanner 140px 110px,
+block-banner 140px 110px,
+    // button label
+    close-gray 16px 16px,
+calendar-gray 15px 16px,
+plus-gray 16px 16px,
+time 15px 15px,
+location 16px 16px,
+transportation 16px 16px,
+person 15px 16px,
+communication 16px 14px,
+medic 15px 15px,
+copy 14px 16px,
+refresh 15px 15px,
+download 13px 16px,
+bus 14px 16px,
+globe 25px 25px;
+
+// svg image class generator
+@each $svg in $svg-images {
+    $image : nth($svg, 1);
+    $width : nth($svg, 2);
+    $height : nth($svg, 3);
+
+    .svg__#{$image} {
+        background : url(../images/svg/#{$image}.svg) no-repeat;
+        width      : #{$width};
+        height     : #{$height};
+    }
+}

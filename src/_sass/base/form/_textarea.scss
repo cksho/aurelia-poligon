@@ -1,0 +1,25 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Textarea
+*
+*  ============================
+*/
+
+//============================
+//  [Textarea]
+//============================
+
+textarea,
+.textarea {
+  @extend .input;
+  min-height: 80px;
+  resize: none;
+}
+
+.textarea--resize {
+  @extend .textarea;
+  resize: vertical;
+}

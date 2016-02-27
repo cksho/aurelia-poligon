@@ -1,0 +1,108 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Checkboxes extended
+*
+*  ============================
+*/
+
+//=============================
+//  [Checkboxes extended]
+//=============================
+
+$checkbox-label-bg : $white;
+
+.checkbox-label,
+.selected-checkbox-label {
+    display       : inline-block;
+    margin-bottom : 10px;
+    .checkbox-label__item {
+        @include drop-shadow(2px, $border-lighter);
+        height                : 34px;
+        line-height           : 34px;
+        padding               : 0 20px;
+        background-color      : $checkbox-label-bg;
+        border                : 1px solid $border;
+        -webkit-border-radius : 4px;
+        border-radius         : 4px;
+        color                 : $font-secondary;
+        cursor                : pointer;
+    }
+    input[type=checkbox] {
+        display : none;
+    }
+    input[type=checkbox]:checked + .checkbox-label__item {
+        @include inner-shadow(2px, rgba(0, 0, 0, 0.15));
+        background-color : $secondary-color;
+        border-color     : darken($secondary-color, 5%);
+        color            : $white;
+        .svg--center path {
+            fill : $white;
+        }
+    }
+    .svg--center {
+        position     : relative;
+        top          : -1px;
+        margin-right : 5px;
+    }
+    .svg--center path {
+        fill : $border;
+        transition: fill 0.2s;
+    }
+}
+
+.checkbox-label-group {
+    > label {
+        display       : inline-block;
+        margin-bottom : 10px;
+        > div {
+            @include drop-shadow(2px, $border-lighter);
+            height                : 34px;
+            line-height           : 34px;
+            padding               : 0 20px;
+            background-color      : $checkbox-label-bg;
+            border                : 1px solid $border;
+            -webkit-border-radius : 4px;
+            border-radius         : 4px;
+            color                 : $font-secondary;
+            cursor                : pointer;
+        }
+        > input[type=checkbox] {
+            display : none;
+        }
+        > input[type=checkbox]:checked + div {
+            @include inner-shadow(2px, rgba(0, 0, 0, 0.15));
+            background-color : $secondary-color;
+            border-color     : darken($secondary-color, 5%);
+            color            : $white;
+            i path {
+                fill : $white;
+            }
+        }
+        i {
+            position     : relative;
+            top          : -1px;
+            margin-right : 5px;
+        }
+        i path {
+            fill : $border;
+            transition: fill 0.2s;
+        }
+    }
+}
+
+// selected checkbox presentation
+.selected-checkbox-label {
+    .checkbox-label__item {
+        @include inner-shadow(2px, rgba(0, 0, 0, 0.15));
+        background-color : $secondary-color;
+        border-color     : darken($secondary-color, 5%);
+        color            : $white;
+        cursor           : default;
+        .svg--center path {
+            fill : $white;
+        }
+    }
+}

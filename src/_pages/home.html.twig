@@ -1,0 +1,66 @@
+---
+title: 'Homepage'
+---
+
+{% extends "_layout/base.html.twig" %}
+{#{% import "_component/helpers/svg.html.twig" as foobar %}#}
+{#{% include "_component/helpers/svg.html.twig" %}#}
+
+
+{% block main %}
+    <style>
+        #container {
+            position: relative;
+            height:400px;
+            width:400px;
+            margin:60px;
+            overflow: scroll;
+        }
+    </style>
+<div id="container">
+    2222454545322
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+    dsadasdas <br>
+    dsadasdas <br>dsadasdas <br>
+
+</div>
+a
+{#{{ svg('icon-fb') }}#}
+{#{{ svg('icon-tw') }}#}
+{#{{ svg('icon-yt') }}#}
+
+
+<h3>Newss list</h3>
+{% for news in newses %}
+    <div class="news" style="float:left;width: 100%;">
+      <h3>{{ news.title }}</h3>
+      <div>{{ news.date }}</div>
+        <a href="{{ news.image }}" class="fancybox">
+            <img src="{{ news.image }}" width="200" alt="{{ news.title }}">
+        </a>
+      <p>{{ news.desc|truncate(50) }}</p>
+    </div>
+{% endfor %}
+
+{% endblock %}

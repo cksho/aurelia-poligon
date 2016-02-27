@@ -1,0 +1,178 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Variables
+*    Default inputs
+*    Html5 inputs
+*    Input with icon
+*    Input with wordcount
+*
+*  ============================
+*/
+
+//=============================
+//  [Variables]
+//=============================
+
+$input-bg: $white;
+$input-border: $border-darker;
+
+$input-padding: 8px 15px;
+$input-border-radius: 4px;
+
+//============================
+//  [Default inputs]
+//============================
+
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=phone],
+input[type=text],
+input[type=url],
+.input {
+    // styles for normal state
+    padding: $input-padding;
+    background-color: $input-bg;
+    border-radius: $input-border-radius;
+    border: 1px solid $border;
+    font-size: 13px;
+    width: 100%;
+    color: $font-secondary;
+    @include inner-shadow(2px, $border-lighter);
+    transition: border-color 0.2s;
+    &:hover {
+        // styles for :hover state
+
+    }
+    &:focus {
+        // styles for :focus state
+        border-color: $secondary-color;
+    }
+    &[disabled] {
+        background-color: lighten($border-lighter, 5%);
+    }
+    @include placeholder {
+    }
+
+    .placeholder {
+    }
+}
+
+.input--long {
+    @extend .input;
+    width: 100%;
+}
+
+//============================
+//  [Html5 inputs]
+//============================
+
+input[type=color],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=month],
+input[type=time],
+input[type=week],
+.input-html5 {
+    // styles for normal state
+    &:hover {
+        // styles for :hover state
+
+    }
+    &:focus {
+        // styles for :focus state
+
+    }
+}
+
+//============================
+//  [Input with icon]
+//============================
+
+$input-icons: user, password, phone, tel, email, search, money, url, date;
+
+@each $input in $input-icons {
+    .input-icon--#{$input} {
+        position: relative;
+        input {
+            box-sizing: border-box;
+            padding-left: 52px;
+        }
+    }
+
+    .input-icon--#{$input} i {
+        @include inner-shadow(1px, $border-lighter);
+        display: block;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 36px;
+        height: 31px;
+        line-height: 31px;
+        border-right: 1px solid $border-lighter;
+        background: url(../images/svg/#{$input}-gray.svg) no-repeat center center;
+        text-align: center;
+        &.app-svg-replaced svg {
+            width: 15px;
+            height: 16px;
+            vertical-align: middle;
+            float: none;
+        }
+    }
+
+    .input-icon--#{$input} input:focus {
+        + i.app-svg-replaced svg path {
+            fill: $secondary-color;
+        }
+    }
+
+    // validation
+    .input-icon--#{$input} input.is-valid {
+        border-color: $success;
+        + i.app-svg-replaced svg path {
+            fill: $success;
+        }
+    }
+    .input-icon--#{$input} input.is-invalid {
+        border-color: $error;
+        + i.app-svg-replaced svg path {
+            fill: $error;
+        }
+    }
+}
+.input-icon--date {
+    max-width: 175px;
+}
+
+//============================
+//  [Input with wordcount]
+//============================
+
+$lettercount-font: $white;
+
+.lettercount-wrap {
+    position: relative;
+}
+
+.lettercount {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: $border-darker;
+    padding: 0 20px;
+    height: 20px;
+    line-height: 20px;
+    border-top-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-size: 12px;
+    color: $lettercount-font;
+    &.is-failed {
+        background-color: $error;
+    }
+}

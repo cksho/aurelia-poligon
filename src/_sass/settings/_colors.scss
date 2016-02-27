@@ -1,0 +1,79 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Basic colors
+*    Layout colors
+*    UI colors
+*
+*  ============================
+*/
+
+//=============================
+//	[Basic colors]
+//=============================
+
+$white: #fff;
+$black: #000;
+
+//=============================
+//	[Layout colors]
+//=============================
+
+// primary
+$primary-color-light: #7c92a9;
+$primary-color-lighter: #253952;
+$primary-color: #122338;
+$primary-color-darker: #0f1d2f;
+
+// secondary
+$secondary-color: #ff245c;
+
+// menu
+$page-sidebar-bg: #001e44;
+$page-sidebar-border: #313f6e;
+$menu-active-bg: #283b73;
+$menu-hover-bg: #262a5f;
+$submenu-bg: #001a35;
+$menu-link: #899cad;
+
+// background
+$background-primary: $white;
+$background-secondary: #f9fcff;
+$background-secondary-darker: #eff2f5;
+
+// main font color
+$font-primary: #37383a;
+$font-secondary: #004666;
+
+// borders
+$border-lighter: #dcdcdc;
+$border: #c8c8c8;
+$border-darker: #a4b5c7;
+$border-gray: #a2aebb;
+
+// reborn logo
+$reborn: #858e9e;
+
+// transparents
+@mixin secondary-color-transparent($opacity) {
+	background-color: rgba(255, 83, 83, $opacity);
+}
+
+//=============================
+//	[UI colors]
+//=============================
+
+// buttons
+$btn-save: #39c567;
+$btn-preview: #ffc947;
+$btn-delete: #1384FF;
+
+// drag&drop
+$table-row-highlight: #fff7dc;
+
+// messages
+$success: #00c280;
+$error: #f52740;
+$warning: #ffc947;

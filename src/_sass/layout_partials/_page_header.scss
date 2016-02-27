@@ -1,0 +1,107 @@
+/*
+*  ============================
+*
+*    [Table of contents]
+*
+*    Header
+*    Logo
+*    User
+*
+*  ============================
+*/
+
+//=============================
+//	[Header]
+//=============================
+
+.page__header {
+    @include clearfix();
+    width: 100%;
+    height: $page-header-height;
+    line-height: $page-header-height;
+    background-color: $white;
+    border-bottom: 1px solid $border;
+    box-shadow: 0 3px 0 0 #e8e8e8;
+    z-index: 100;
+    padding-left: 70px;
+}
+
+//=============================
+//	[Logo]
+//=============================
+
+.logo {
+    float: left;
+    width: 217px;
+    height: 100%;
+    padding-left: 30px;
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+//=============================
+//	[User]
+//=============================
+
+.user {
+    float: right;
+    padding: 0 90px 0 30px;
+    height: 100%;
+    line-height: $page-header-height;
+    position: relative;
+}
+
+.user__avatar {
+    background: #e6e6e6;
+    height: 55px;
+    line-height: 49px;
+    width: 55px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 100%;
+    text-align: center;
+}
+
+.user__name {
+    margin-left: 0;
+    font-size: 16px;
+    color: #37373a;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    margin-left: 10px;
+}
+
+.user__logout {
+    display:block;
+    position: absolute;
+    right:30px;
+    top:50%;
+    margin-top:-15px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid $border;
+    text-align: center;
+    transition: border-color 0.2s;
+    &:hover {
+        border:1px solid $secondary-color;
+    }
+}
+//=============================
+//	[#. Media queries]
+//=============================
+
+// min-width: $screen-sm and max-width: $screen-md
+@media (min-width: $screen-sm) and (max-width: $screen-md) {
+
+}
+
+// min-width: $screen-md 
+@media (min-width: $screen-md) {
+
+}
