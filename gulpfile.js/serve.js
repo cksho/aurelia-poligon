@@ -5,20 +5,24 @@
 
 var gulp = require('gulp');
 var gulpSequence = require('gulp-sequence');
+var modRewrite = require('connect-modrewrite');
+
 
 gulp.task('startBrowserSync', function () {
     return browserSync.init({
         server: {
             baseDir: global.path.src,
+            index:"index.html",
+            middleware:[modRewrite(['^[^\\.]*$ /index.html [L]'])],
             routes: {
                 '/jspm_packages': './jspm_packages',
                 '/jspm_packages/': './jspm_packages/',
-                '/vendor': './'
+                '/vendor': './',
             },
         },
-        directory: true,
+        directory: false,
         port: 9000,
-        notify: true
+        notify: false,
     });
 });
 

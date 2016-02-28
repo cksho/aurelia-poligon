@@ -12,12 +12,12 @@
     <link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="">
 </head>
-<body>
+<body aurelia-app="app-config">
 {% block main %}
 {% endblock %}
 
 <script src="jspm_packages/system.js"></script>
 <script src="vendor/config.js"></script>
-<script>System.import('_app/index')</script>
+<script>SystemJS.import('aurelia-bootstrapper');</script>
 </body>
 </html>

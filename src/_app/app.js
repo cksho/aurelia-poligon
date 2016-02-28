@@ -1,17 +1,23 @@
-//http://www.2ality.com/2014/09/es6-modules-final.html
+export class App {
+    configureRouter(config, router) {
+        config.title = 'Aurelia Root Title';
+        config.options.pushState = true;
 
-alert('xxx');
+        // routing map
+        config.map([{
+            route: ['/'],
+            name: 'home',
+            moduleId: './pages/home',
+            nav: true,
+            title: 'Home Routing',
+        }, {
+            route: ['list'],
+            name: 'list',
+            moduleId: './pages/list',
+            nav: true,
+            title: 'Listing Routing',
+        }]);
 
-//
-//var audi = new Car({
-//    marka: 'Audi',
-//    model: 'Q7'
-//});
-//
-//reactDemo();
-//
-//audi.drive(125);
-////audi.honk();
-//audi.honk2();
-//foo();
-//module2();
+        this.router = router;
+    }
+}
